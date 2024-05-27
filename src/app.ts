@@ -13,11 +13,7 @@ class App {
 
   middlewares() {
     this.server.use(express.json({ limit: "50mb" }))
-    this.server.use(
-      cors({
-        origin: ["http://localhost:3000", "https://app.tradespy.com.br"],
-      })
-    )
+    this.server.use(cors())
   }
 
   routes() {

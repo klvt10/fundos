@@ -11,7 +11,7 @@ dbs.connect(async () => {
 
 app.listen(process.env.APP_PORT, async () => {
   console.log(
-    `O serviço ST-BACK está rodando em http://localhost:${process.env.APP_PORT}.`
+    `O serviço FUNDOS está rodando em http://localhost:${process.env.APP_PORT}.`
   )
 })
 
