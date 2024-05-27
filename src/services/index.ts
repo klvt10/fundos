@@ -15,8 +15,28 @@ const insertData = async (
   await dbs.clientPostgres.query(query, [data, nomeFundo, codFundo, cota])
 }
 
+const dropTable = async () => {
+  await dbs.clientPostgres.query("DROP TABLE COTAS")
+  console.log("Tabela deletada")
+}
+
+const createTable = async () => {
+  await dbs.clientPostgres.query(`
+    CREATE TABLE IF NOT EXISTS cotas (
+      data DATE,
+      fundo VARCHAR(255),
+      cod VARCHAR(255),
+      cota DECIMAL(15, 10)
+    );
+  `)
+  console.log("Tabela recriada")
+}
+
 const processCSV = async (filePath: any) => {
   return new Promise(async (resolve, reject) => {
+    await dropTable()
+    await createTable()
+
     const results: any = []
     let rowNumber = 0
     const fundos: any = []

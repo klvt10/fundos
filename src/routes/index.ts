@@ -6,10 +6,10 @@ const router = Router()
 
 const filePath = path.join(__dirname, "..", "files", "quotes.csv")
 
-router.use("/getquotes", (req, res) => {
-  const response = processCSV(filePath)
+router.use("/getquotes", async (req, res) => {
+  await processCSV(filePath)
 
-  res.json(response)
+  res.json("Banco de dados atualizado")
 })
 
 export default router
